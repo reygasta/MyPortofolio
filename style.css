@@ -1,0 +1,243 @@
+/* --- Root & Base Styles --- */
+:root {
+  --primary-dark: #0D1F23;
+  --secondary-dark: #132E35;
+  --accent-dark: #2D4A53;
+  --primary-light: #69818D;
+  --secondary-light: #AFB3B7;
+  --muted-gray: #5A636A;
+  --text-gray-300: #D1D5DB; /* Standard Tailwind gray-300 for consistency */
+}
+
+body {
+  background-color: var(--primary-dark);
+  font-family: 'Inter', sans-serif;
+  /* Improve mobile interaction */
+  -webkit-tap-highlight-color: transparent;
+  touch-action: pan-y;
+}
+
+
+/* --- Reusable Utility Classes (Converted from @apply) --- */
+
+.nav-link {
+  font-size: 0.875rem; /* 14px */
+  font-weight: 500;
+  color: var(--text-gray-300);
+  transition: color 0.3s ease-in-out;
+}
+.nav-link:hover {
+  color: var(--primary-light);
+}
+
+.social-icon {
+  color: var(--secondary-light);
+  transition: color 0.3s ease-in-out;
+}
+.social-icon:hover {
+  color: var(--primary-light);
+}
+
+.contact-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.25rem; /* 12px 20px */
+  border: 1px solid transparent;
+  border-radius: 0.375rem; /* 6px */
+  background-color: var(--accent-dark);
+  color: #FFFFFF;
+  font-size: 1rem; /* 16px */
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+}
+.contact-button:hover {
+  background-color: var(--secondary-dark);
+  transform: scale(1.05);
+}
+
+.img-card {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.5rem; /* 8px */
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+/* * Provides vertical spacing between content sections.
+ * `!important` is used to ensure it overrides any potential
+ * conflicting utility classes from the framework.
+ */
+.section-container {
+  margin-top: 8rem !important; /* 128px on mobile */
+}
+@media (min-width: 768px) {
+  .section-container {
+    margin-top: 9rem !important; /* 144px on desktop */
+  }
+}
+
+
+/* --- Fullscreen Animated Background --- */
+
+.area {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100vh;
+  background: var(--primary-dark);
+}
+
+.circles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.circles li {
+  position: absolute;
+  bottom: -150px;
+  display: block;
+  width: 20px;
+  height: 20px;
+  list-style: none;
+  background: rgba(45, 74, 83, 0.4);
+  animation: animate-circles 25s linear infinite;
+}
+
+/* Unique properties for each circle */
+.circles li:nth-child(1) { left: 25%; width: 80px; height: 80px; animation-delay: 0s; }
+.circles li:nth-child(2) { left: 10%; width: 20px; height: 20px; animation-delay: 2s; animation-duration: 12s; }
+.circles li:nth-child(3) { left: 70%; width: 20px; height: 20px; animation-delay: 4s; }
+.circles li:nth-child(4) { left: 40%; width: 60px; height: 60px; animation-delay: 0s; animation-duration: 18s; }
+.circles li:nth-child(5) { left: 65%; width: 20px; height: 20px; animation-delay: 0s; }
+.circles li:nth-child(6) { left: 75%; width: 110px; height: 110px; animation-delay: 3s; }
+.circles li:nth-child(7) { left: 35%; width: 150px; height: 150px; animation-delay: 7s; }
+.circles li:nth-child(8) { left: 50%; width: 25px; height: 25px; animation-delay: 15s; animation-duration: 45s; }
+.circles li:nth-child(9) { left: 20%; width: 15px; height: 15px; animation-delay: 2s; animation-duration: 35s; }
+.circles li:nth-child(10) { left: 85%; width: 150px; height: 150px; animation-delay: 0s; animation-duration: 11s; }
+
+
+/* --- Animations & Special Effects --- */
+
+@keyframes animate-circles {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+    border-radius: 0;
+  }
+  100% {
+    transform: translateY(-1000px) rotate(720deg);
+    opacity: 0;
+    border-radius: 50%;
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 3s infinite;
+}
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(-4%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+/* For fade-in on scroll effect */
+.animated-element {
+  opacity: 0;
+  transform: translateY(2rem);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.animated-element.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  width: 3px;
+  margin-left: 4px;
+  background-color: var(--primary-light);
+  animation: blink-cursor 1s infinite;
+}
+@keyframes blink-cursor {
+  50% {
+    background-color: transparent;
+  }
+}
+
+/* --- Components --- */
+
+.neon-cursor {
+  position: fixed;
+  z-index: 9999;
+  width: 25px;
+  height: 25px;
+  border: 2px solid var(--primary-light);
+  border-radius: 50%;
+  background-color: rgba(105, 129, 141, 0.1);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  transition: width 0.3s ease-in-out, height 0.3s ease-in-out;
+}
+
+.nav-link.active {
+  color: var(--primary-light);
+}
+
+.scroll-to-top {
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border: 2px solid var(--primary-light);
+  border-radius: 50%;
+  background-color: var(--accent-dark);
+  color: var(--secondary-light);
+  box-shadow: 0 0 10px rgba(105, 129, 141, 0.5), 0 0 20px rgba(105, 129, 141, 0.2);
+  opacity: 0;
+  transform: translateY(100px);
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+.scroll-to-top.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.scroll-to-top:hover {
+  background-color: var(--secondary-dark);
+  color: #FFFFFF;
+  box-shadow: 0 0 15px rgba(105, 129, 141, 0.8), 0 0 30px rgba(105, 129, 141, 0.5);
+  transform: scale(1.05);
+}
+
+
+/* --- Image Filter Effect --- */
+
+.filtered-image {
+  filter: sepia(50%) brightness(80%) contrast(1.1);
+  transition: filter 0.4s ease-in-out;
+}
+/* The effect is removed on hover of the parent group or the image itself */
+.group:hover .filtered-image,
+.filtered-image:hover {
+  filter: sepia(0%) brightness(100%) contrast(1);
+}
