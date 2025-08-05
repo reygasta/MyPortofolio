@@ -15,6 +15,3 @@ A clean and responsive personal portfolio website built with HTML, CSS, and Java
 - Lightweight and fast, built without frontend frameworks
 
 ---
-
-## 📁 Project Structure
-
