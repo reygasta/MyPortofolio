@@ -77,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const skills = [
     { name: "HTML5", icon: "photos/icons/html-5.svg" },
     { name: "CSS3", icon: "photos/icons/css-3.svg" },
+    { name: "JavaScript", icon: "photos/icons/javascript.svg" },
     { name: "React", icon: "photos/icons/react.svg" },
     { name: "Python", icon: "photos/icons/python.svg" },
     { name: "TensorFlow", icon: "photos/icons/tensorflow.svg" },
