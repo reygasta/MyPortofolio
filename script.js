@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
     { name: "PLC Systems", icon: "photos/icons/plc.svg" },
     { name: "SOLIDWORKS", icon: "photos/icons/solidworks.svg" },
     { name: "Crypto", icon: "photos/icons/crypto.svg" },
-    { name: "Technical Analysis", icon: "photos/icons/technical-analysis.svg" }
+    { name: "Technical Analysis", icon: "photos/icons/trend.svg" }
   ];
 
 
